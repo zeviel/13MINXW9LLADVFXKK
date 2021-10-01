@@ -21,7 +21,7 @@ print("""[1] Send Wall Advertise to Online Users
 select = input("Select >> ")
 
 if select == "1":
-    with concurrent.futures.ThreadPoolExecutor(max_workers=500) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=150) as executor:
         while True:
             try:
                 for i in range(100, 1000, 5000):
@@ -40,7 +40,7 @@ if select == "1":
                 print(e)
 
 elif select == "2":
-    with concurrent.futures.ThreadPoolExecutor(max_workers=500) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=150) as executor:
         while True:
             try:
                 for i in range(100, 1000, 5000):
