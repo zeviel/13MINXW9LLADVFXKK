@@ -8,7 +8,7 @@ Wall Advertise Bot For Amino
 - pip install colored
 - pip install pyfiglet
 - pip install AminoLab
-- git clone https://github.com/LilZevi/AminoWallAdvFxck
+- git clone https://github.com/deluvsushi/AminoWallAdvFxck
 - !Для запуска/For starting!
 - cd AminoWallAdvFxck
 - python AminoWallAdvFxck.py
