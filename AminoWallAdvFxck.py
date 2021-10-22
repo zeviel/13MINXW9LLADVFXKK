@@ -4,8 +4,8 @@ import concurrent.futures
 from colored import fore, back, style, attr
 attr(0)
 print(fore.DARK_SEA_GREEN_2 + style.BOLD)
-print("""Script by Lil Zevi
-Github : https://github.com/LilZevi""")
+print("""Script by deluvsushi
+Github : https://github.com/deluvsushi""")
 print(pyfiglet.figlet_format("aminowalladvfxck", font="drpepper", width=78))
 client = AminoLab.Client()
 email = input("Email >> ")
