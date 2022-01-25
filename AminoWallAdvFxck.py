@@ -1,58 +1,63 @@
-import AminoLab
-import pyfiglet
-import concurrent.futures
-from colored import fore, back, style, attr
+import amino
+from pyfiglet import figlet_format
+from colored import fore, style, attr
+from concurrent.futures import ThreadPoolExecutor
 attr(0)
-print(fore.DARK_SEA_GREEN_2 + style.BOLD)
-print("""Script by deluvsushi
-Github : https://github.com/deluvsushi""")
-print(pyfiglet.figlet_format("aminowalladvfxck", font="drpepper", width=78))
-client = AminoLab.Client()
-email = input("Email >> ")
-password = input("Password >> ")
-client.auth(email=email, password=password)
-message = input("Message >> ")
-clients = client.my_communities()
+print(
+    f"""{fore.DARK_SEA_GREEN_2 + style.BOLD}
+Script by deluvsushi
+Github : https://github.com/deluvsushi"""
+)
+print(figlet_format("aminowalladvfxck", font="drpepper", width=78))
+client = amino.Client()
+email = input("-- Email::: ")
+password = input("-- Password::: ")
+client.login(email=email, password=password)
+clients = client.sub_clients(start=0, size=100)
 for x, name in enumerate(clients.name, 1):
     print(f"{x}.{name}")
-ndc_Id = clients.ndc_Id[int(input("Select the community >> ")) - 1]
-print("""[1] Send Wall Advertise to Online Users
-[2] Send Wall Advertise to Recent Users""")
-select = input("Select >> ")
+com_id = clients.comId[int(input("-- Select the community::: ")) - 1]
+sub_client = amino.SubClient(comId=com_id, profile=client.profile)
+message = input("-- Message::: ")
+print(
+"""
+[1] Send Wall Advertise to Online Users
+[2] Send Wall Advertise to Recent Users
+"""
+)
+select = int(input("-- Select::: "))
 
-if select == "1":
-    with concurrent.futures.ThreadPoolExecutor(max_workers=150) as executor:
+if select == 1:
+    with ThreadPoolExecutor(max_workers=100) as executor:
         while True:
             try:
-                for i in range(100, 1000, 5000):
-                    online_users = client.get_online_members(
-                        ndc_Id=ndc_Id, start=i, size=100)
+                for i in range(100, 2500, 15000):
+                    online_users = sub_client.get_online_users(
+                        start=i, size=100)
                     for user_id, nickname in zip(
-                            online_users.user_Id, online_users.nickname):
-                        print(f"Sended Advertise, {nickname} > {user_id}")
+                            online_users.userId, online_users.nickname):
+                        print(f"Sent advertise to::: {nickname}|{user_id}")
                         _ = [
                             executor.submit(
-                                client.submit_comment,
-                                ndc_Id,
+                                sub_client.comment,
                                 message,
                                 user_id)]
             except Exception as e:
                 print(e)
 
-elif select == "2":
-    with concurrent.futures.ThreadPoolExecutor(max_workers=150) as executor:
+elif select == 2:
+    with ThreadPoolExecutor(max_workers=100) as executor:
         while True:
             try:
-                for i in range(100, 1000, 5000):
-                    recent_users = client.get_recent_members(
-                        ndc_Id=ndc_Id, start=i, size=100)
+                for i in range(100, 2500, 15000):
+                    recent_users = sub_client.get_all_users(
+                        type="recent", start=i, size=100)
                     for user_id, nickname in zip(
                             recent_users.user_Id, recent_users.nickname):
-                        print(f"Sended Advertise, {nickname} > {user_id}")
+                        print(f"Sent advertise to::: {nickname}|{user_id}")
                         _ = [
                             executor.submit(
-                                client.submit_comment,
-                                ndc_Id,
+                                sub_client.comment,
                                 message,
                                 user_id)]
             except Exception as e:
