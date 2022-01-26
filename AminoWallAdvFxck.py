@@ -35,7 +35,7 @@ if select == 1:
                     online_users = sub_client.get_online_users(
                         start=i, size=100)
                     for user_id, nickname in zip(
-                            online_users.userId, online_users.nickname):
+                            online_users.profile.userId, online_users.profile.nickname):
                         print(f"Sent advertise to::: {nickname}|{user_id}")
                         _ = [
                             executor.submit(
@@ -53,7 +53,7 @@ elif select == 2:
                     recent_users = sub_client.get_all_users(
                         type="recent", start=i, size=100)
                     for user_id, nickname in zip(
-                            recent_users.userId, recent_users.nickname):
+                            recent_users.profile.userId, recent_users.profile.nickname):
                         print(f"Sent advertise to::: {nickname}|{user_id}")
                         _ = [
                             executor.submit(
