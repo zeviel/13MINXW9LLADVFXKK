@@ -53,7 +53,7 @@ elif select == 2:
                     recent_users = sub_client.get_all_users(
                         type="recent", start=i, size=100)
                     for user_id, nickname in zip(
-                            recent_users.user_Id, recent_users.nickname):
+                            recent_users.userId, recent_users.nickname):
                         print(f"Sent advertise to::: {nickname}|{user_id}")
                         _ = [
                             executor.submit(
