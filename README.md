@@ -1,4 +1,4 @@
-# AminoWallAdvFxck
+# 13MINXW9LLADVFXKK
 Wall Advertise Bot For Amino
 
 
@@ -10,7 +10,7 @@ Wall Advertise Bot For Amino
 - pip install amino.py
 - pip install colored
 - pip install pyfiglet
-- git clone https://github.com/deluvsushi/AminoWallAdvFxck
-- cd AminoWallAdvFxck
-- python AminoWallAdvFxck.py
+- git clone https://github.com/deluvsushi/13MINXW9LLADVFXKK
+- cd 13MINXW9LLADVFXKK
+- python 13MINXW9LLADVFXKK.py
 ```
