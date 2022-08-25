@@ -5,8 +5,8 @@ from concurrent.futures import ThreadPoolExecutor
 attr(0)
 print(
     f"""{fore.DARK_SEA_GREEN_2 + style.BOLD}
-Script by deluvsushi
-Github : https://github.com/deluvsushi"""
+Script by zeviel
+Github : https://github.com/zeviel"""
 )
 print(figlet_format("13MINXW9LLADVFXKK", font="drpepper", width=78))
 client = amino.Client()
